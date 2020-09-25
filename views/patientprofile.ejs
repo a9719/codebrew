@@ -2,10 +2,64 @@
 <html> 
 <head> 
     <title> Profile Page</title> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      button {
+            background-color: #5A5373;
+            color: white;
+            font-size: 17px;
+            border-radius: 15px;
+            padding: 10px 5px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+      .bg-modal {
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-contents {
+        height: 300px;
+        width: 500px;
+        background-color: white;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        border-radius: 4px;
+      }
+
+      input {
+        margin: 15px auto;
+        display: block;
+        width: 50%;
+        padding: 8px;
+        border: 1px solid gray;
+      }
+
+    </style>
+
           
           
       
 </head> 
+<script>
+  function onModalClick() {
+    document.querySelector('.bg-modal').style.display = "flex";
+  }
+
+  function onModalClose() {
+    document.querySelector('.bg-modal').style.display = "none";
+  }
+</script>
 <div class="topnav">
     <div class="topnav">
       
@@ -17,6 +71,27 @@
     
     <div class = "search">
         <h1> Hi <%=name%>! </h1>
+    </div>
+
+
+    <div class="record-content">
+      <h1>My record</h1>
+      <button type="button" onclick="onModalClick()">Add record</button>
+    </div>
+
+    <div class="bg-modal">
+      <div class="modal-contents">
+    
+        <form action="">
+          <input type="text" placeholder="Date">
+          <input type="text" placeholder="Food Intake">
+          <input type="text" placeholder="Water Intake">
+          <input type="text" placeholder="Average blood pressure">
+          <button type="submit" onclick="onModalClose()">Submit</button>
+          <button type="close" onclick="onModalClose()">Cancel</button>
+        </form>
+    
+      </div>
     </div>
 
 </body> 

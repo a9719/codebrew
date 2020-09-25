@@ -65,6 +65,21 @@ var createDayRecord = function(req,res){
     });
     record.save();
 };
-module.exports.createDayRecord =createDayRecord;
+
+var findRecordsByUserId= function(req, res) {
+    var userid = req.params.userid;
+    console.log(userid);
+    PatientRecords.find({userId:userid}, function(err, record) {
+        if (!err) {
+            console.log(record);
+            res.send(record);
+        } else {
+            res.sendStatus(404);
+        }
+    });
+};
+
+module.exports.findRecordsByUserId = findRecordsByUserId;
+module.exports.createDayRecord = createDayRecord;
 module.exports.findAllUsers = findAllUsers;
 module.exports.createPatient= createPatient;
