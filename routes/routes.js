@@ -6,21 +6,19 @@ const { check, validationResult } = require('express-validator');
 var controller = require('../controller.js');
 var Patient= mongoose.model('patient');
 var PatientRecords= mongoose.model('Patientrecords');
-router.get('/', (req, res) => {
 
-    
+router.get('/', (req, res) => {
         res.render("welcome.ejs");
 });
+
 router.get('/signup', function (req, res) {
-    res.sendfile("./views/signuppatient.html");
-
-
+    res.render("signuppatient.ejs");
 });
+
 router.get('/loginpatient', function (req, res) {
     res.render('loginpatient.ejs')
-
-
 });
+
 router.post('/credentialspatient', [
     check('email').isEmail().withMessage("Invalid email address"),
     check('password').isLength({ min: 2 }).withMessage("Password must be at least 3 chars long")
