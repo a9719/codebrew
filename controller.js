@@ -44,6 +44,7 @@ var createPatient = function(req, res) {
     });
 };
 
+
 var findAllUsers = function(req, res) {
     Patient.find(function(err, users) {
         if (!err) {
@@ -53,5 +54,17 @@ var findAllUsers = function(req, res) {
         }
     });
 };
+
+var createDayRecord = function(req,res){
+    var record = new PatientRecords({
+        "user":req.body.user,
+        "date":req.body.date,
+        "FoodIntake":req.body.FoodIntake,
+        "WaterIntake":req.body.WaterIntake,
+        "vitals":[]
+    });
+    record.save();
+};
+module.exports.createDayRecord =createDayRecord;
 module.exports.findAllUsers = findAllUsers;
 module.exports.createPatient= createPatient;

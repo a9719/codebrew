@@ -48,6 +48,7 @@ router.post('/credentialspatient', [
     Patient.findOne({email:userEmail,password:userPassword}, function(err,user) {
         if (!err  && user!=null) {
             console.log(user);
+            req.session.id =user.id;
             req.session.email = user.email;
             req.session.password = user.password;
             req.session.name= user.name;
@@ -75,6 +76,7 @@ router.get('/homepagepatient', function(req,res){
             res.render("welcome.ejs");
         }
     })
+router.post('/publishrecord',controller.createDayRecord);
 
 router.post('/patientcreateuser',controller.createPatient);
 router.get('/users', controller.findAllUsers);

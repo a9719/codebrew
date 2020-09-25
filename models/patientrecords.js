@@ -4,26 +4,20 @@ const PatientrecordsSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'patient'
     },
-    
-    daydescriptions: [
-     
-      {
-        date:{
-          type:Date,
+    date:{
+          type:String,
           required:true
         },
-        FoodIntake:[{
-          name:{type:String}
-        }],
+        FoodIntake:{type:String, required:true},
         WaterIntake:{
-          type:String
+          type:String,required:true
         },
         vitals:[{
             averagebloodpressure:{type:String}
         }]
 
 
-      }
-    ]
+      
+    
 });
 var Patientrecords = mongoose.model('Patientrecords', PatientrecordsSchema);
