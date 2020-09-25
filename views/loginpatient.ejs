@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title> Login </title>
+
+  <style>
+    .btn-default{
+        background-color: #428BCA;
+        color:whitesmoke;
+        border-color: #428BCA;
+      }
+        
+      .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+      background-color: #23527b;
+      color:whitesmoke;
+      border-color: #23527b;
+      }
+  
+  </style>
   
 </head>
-<div class="topnav">
-  <div class="topnav">
-    <a href="/">Home</a>
-    <a class="active" href="/login">Login</a>
-    <a href="/signup">Signup</a>
 
+<nav>
+  <%- include('partials/navbar.ejs'); %>
+</nav>
+
+<body>
+  <div class="container-fluid mx-auto" style="margin-top: 2em;">
+  
+    <div class="row justify-content-center">
+      <h1 className="display-4">Welcome Back</h1>
+    </div>
+    <div class="row justify-content-center mt-1">
+      <p className="lead">Login with</p>
+    </div>
+    <div class = "form">
+    <form action="/credentialspatient" method="post">
+
+      <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" 
+      placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required><br>
+
+      <input type="password" name="password" class="form-control" id="password" placeholder="Password" required><br>
+
+      <button type="submit" class="btn btn-default btn-block">Submit</button>
+    </form>
   </div>
 </div>
-<body>
-  <h2>Login</h2>
-  <h3>Welcome!</h3>
-  <div class = "form">
-  <form action="/credentialspatient" method="post">
 
-    <div class="container" >
-      <!--<label for="email"><b>E-mail</b></label><br>-->
-      <input type="email" name="email" id="email"
-      placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required><br>
-
-      <!--<label for="password"><b>Password</b></label><br>-->
-      <input type="password" name="password"
-      id="password" placeholder="Password" required><br>
-
-      <button type="submit">Continue</button>
-    </div>
-  </form>
-</div>
-</div>
 </body>
-</html>
 
-</form>
+<footer>
+  <%- include('partials/footer.ejs'); %>
+</footer>
+
+</html>
