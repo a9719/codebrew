@@ -8,13 +8,17 @@ const PatientrecordsSchema = new mongoose.Schema({
           type:String,
           required:true
         },
-        FoodIntake:{type:String, required:true},
-        WaterIntake:{
-          type:String,required:true
-        },
-        vitals:[{
+    FoodIntake:{
+      type:String,
+      required:true
+    },
+    WaterIntake:{
+      type:String,
+      required:true
+    },
+    vitals:[{
             averagebloodpressure:{type:String}
-        }]
+          }]
 
 
       
