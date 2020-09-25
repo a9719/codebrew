@@ -40,7 +40,7 @@
 </nav>
 
 <body>
-    <div class="container" >
+    <div class="container" style="margin-top: 3em;">
         <div class="row justify-content-center mt-1">
             <h1 className="display-4">Create Account</h1>
         </div>
@@ -49,37 +49,23 @@
                 Sign up with
             </p>
         </div>
+
         <div class ="form">
             <form action="/patientcreateuser" method="post" onsubmit="return validate()">
 
-                <div class="container" >
+                <input class="form-control" type="text" name="name" id="name"
+                placeholder="Name"  required><br>
 
-                    <div class="row justify-content-center mt-1">
-                        <!--<label for="name"><b>Name</b></label><br>-->
-                        <input type="text" name="name" id="name"
-                        placeholder="Name"  required><br>
-                    </div>
-
-                    <div class="row justify-content-center mt-1">
-                        <!--<label for="name"><b>E-Mail</b></label><br>-->
-                        <input type="email" name="email" id="email"
-                        placeholder="Email e.g. username@gmail.com"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required><br>
-                    </div>
+                    <input class="form-control" type="email" name="email" id="email" aria-describedby="emailHelp"
+                    placeholder="Email e.g. username@gmail.com"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required><br>
                     
-                    <div class="row justify-content-center mt-1">
-                        <!--<label for="name"><b>Password</b></label><br>-->
-                        <input type="password" name="password" minlength="3"
-                        id="password" placeholder="Password: minimum length 3 " required><br>
-                    </div>
+                    <input class="form-control" type="password" name="password" minlength="3"
+                    id="password" placeholder="Password: minimum length 3 " required><br>
                     
-                    <div class="row justify-content-center mt-1">
-                        <input type="password" name="cfmpassword"
-                        id="cfmpassword" placeholder="Re-enter Password " required><br>
-                    </div>
+                    <input class="form-control" type="password" name="cfmpassword"
+                    id="cfmpassword" placeholder="Re-enter Password " required><br>
 
-                    <div class="row justify-content-center mt-2">
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </div>
+                    <button type="submit" class="btn btn-default btn-block">Submit</button>
                 </div>
             </form>
         </div>
