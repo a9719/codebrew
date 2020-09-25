@@ -52,6 +52,8 @@
       
 </head> 
 <script>
+  import axios from 'axios';
+
   function onModalClick() {
     document.querySelector('.bg-modal').style.display = "flex";
   }
@@ -59,6 +61,18 @@
   function onModalClose() {
     document.querySelector('.bg-modal').style.display = "none";
   }
+
+  function getRecords() {
+    const url = '/records/:patient';
+    axios.get(url)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+
+        
+      })
+  }
+
 </script>
 <div class="topnav">
     <div class="topnav">
@@ -82,7 +96,7 @@
     <div class="bg-modal">
       <div class="modal-contents">
     
-        <form action="">
+        <form action="/records/create" method = "POST">
           <input type="text" placeholder="Date">
           <input type="text" placeholder="Food Intake">
           <input type="text" placeholder="Water Intake">

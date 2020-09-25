@@ -55,21 +55,27 @@ var findAllUsers = function(req, res) {
     });
 };
 
-var createDayRecord = function(req,res){
-    var record = new PatientRecords({
+var createDayRecord = async (req,res) => {
+    const record = new PatientRecords({
         "user":req.body.user,
         "date":req.body.date,
         "FoodIntake":req.body.FoodIntake,
         "WaterIntake":req.body.WaterIntake,
         "vitals":[]
     });
-    record.save();
+    
+    try {
+        const saveRecord = await record.save();
+        return res.json(saveRecord);
+    } catch (err) {
+        return res.json({message: err});
+    }
 };
 
 var findRecordsByUserId= function(req, res) {
     var userid = req.params.userid;
     console.log(userid);
-    PatientRecords.find({userId:userid}, function(err, record) {
+    PatientRecords.find({user:userid}, function(err, record) {
         if (!err) {
             console.log(record);
             res.send(record);

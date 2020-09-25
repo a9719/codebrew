@@ -80,4 +80,6 @@ router.post('/publishrecord',controller.createDayRecord);
 
 router.post('/patientcreateuser',controller.createPatient);
 router.get('/users', controller.findAllUsers);
+router.get('/records/:patient', controller.findRecordsByUserId);
+router.post('/records/create', controller.createDayRecord);
 module.exports = router;
