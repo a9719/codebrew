@@ -25,30 +25,9 @@
   </style>
   
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" style="color: #428BCA;" href="/">DocConnect</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/signup">Signup</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Login
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/loginpatient">Patient Login</a>
-          <a class="dropdown-item" href="/logindoctor">Doctor Login</a>
-        </div>
-      </li>
-    </ul>
-  </div>
+
+<nav>
+  <%- include('partials/navbar.ejs'); %>
 </nav>
 
 <body>
@@ -81,7 +60,11 @@
     </form>
   </div>
 </div>
-</body>
-</html>
 
-</form>
+</body>
+
+<footer>
+  <%- include('partials/footer.ejs'); %>
+</footer>
+
+</html>
