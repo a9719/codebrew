@@ -10,59 +10,7 @@
     <title> DocConnect </title>
     <style>
         body {
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             color: #428BCA;
-        }
-        body, html {
-            height: 100%;
-        }
-        .welcome {
-            padding-top: 150px;
-            max-width: 500px;
-            margin:auto;
-        }
-        .sub {
-            max-width: 500px;
-            margin:auto;
-        }
-        .my-container {
-            position: relative;
-            background: #FFFFFF;
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-        }
-        .my-container:before {
-            content: ' ';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.3;
-            background-image: url("../public/images/ingredients.jpg");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-        }
-        .my-container h1 {
-            font-size: 60px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        .my-container h3 {
-            font-size: 20px;
-            font-style: italic;
-            text-align: center;
-            position: relative;
-            z-index: 2;
         }
         div.button {
             display: block;
@@ -95,31 +43,20 @@
         .fa:hover {
             opacity: 0.7;
         }
-        div.contact {
-                    display: block;
-                    text-align: center;
-                    position: relative;
-                    z-index: 2;
-                    padding-top: 150px;
-        }
         
     </style>
 </head>
 
-<div class = "my-container">
+<div class="container-fluid mt-5">
     
     <body>
 
-        <div class="row justify-content-center">
-            <div class ="welcome">
-                <h1>DocConnect</h1>
-            </div>
+        <div class="row justify-content-center mt-5">
+            <h1 class="display-3 text-center">DocConnect</h1>
         </div>
 
         <div class="row justify-content-center">
-            <div class ="sub">
-                <h3>Connecting Patients and Medical Practitioners</h3>
-            </div>
+            <h4 class="lead text-center"><em>Connecting Patients and Medical Practitioners</em></h4>
         </div>
 
         <div class="row justify-content-center">
@@ -130,13 +67,12 @@
             </div>
         </div>
         
-            <div class="contact">
-                
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                <a href="#" class="fa fa-facebook" style="font-size:26px; color:#428BCA"></a>
-                <a href="#" class="fa fa-twitter" style="font-size:26px; color:#428BCA"></a>
-                <a href="#" class="fa fa-instagram" style="font-size:26px; color:#428BCA"></a>
-            </div>
+        <div class="row justify-content-center align-bottom">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <a href="#" class="fa fa-facebook" style="font-size:26px; color:#428BCA"></a>
+            <a href="#" class="fa fa-twitter" style="font-size:26px; color:#428BCA"></a>
+            <a href="#" class="fa fa-instagram" style="font-size:26px; color:#428BCA"></a>
+        </div>
 
             
     </body>
