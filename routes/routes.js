@@ -127,8 +127,8 @@ router.get('/homepagepatient', function(req,res){
     if (req.session.name){
         PatientRecords.find({user:req.session.userid}, function(err, records) {
             console.log(records);
-            if (records.length > 5){
-                records = records.slice(records.length-5, records.length);
+            if (records.length > 4){
+                records = records.slice(records.length-4, records.length);
             }
             res.render("patientprofile.ejs",{
                 name:req.session.name,
