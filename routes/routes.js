@@ -56,13 +56,13 @@ router.post('/credentialspatient', [
 
     Patient.findOne({email:userEmail,password:userPassword}, function(err,user) {
         if (!err  && user!=null) {
-            
+            console.log(user);
             req.session.userid =user.id;
             req.session.email = user.email;
             req.session.password = user.password;
             req.session.name= user.name;
             
-            
+            console.log(req.session);
 
             res.redirect("/homepagepatient");
 
@@ -81,6 +81,7 @@ router.get('/logout', function (req, res) {
     res.redirect('/');
 
 });
+
 router.post('/credentialsdoctor', [
     check('email').isEmail().withMessage("Invalid email address"),
     check('password').isLength({ min: 2 }).withMessage("Password must be at least 3 chars long")
@@ -107,12 +108,12 @@ router.post('/credentialsdoctor', [
 
     Doctor.findOne({email:userEmail,password:userPassword}, function(err,user) {
         if (!err  && user!=null) {
-           
+            console.log(user);
             req.session.userid =user.id;
             req.session.email = user.email;
             req.session.password = user.password;
             req.session.name= user.name;
-            
+            console.log(req.session);
 
             res.redirect("/homepagedoctor");
 
@@ -146,6 +147,8 @@ router.get('/homepagepatient', function(req,res){
         res.render("welcome.ejs");
     }
 });
+
+
 router.get('/homepagedoctor', function(req,res){
     var j=[];
     if (req.session.name){
@@ -180,30 +183,40 @@ router.get('/homepagedoctor', function(req,res){
         res.render("welcome.ejs");
     }
 });
+
 router.get('/viewpatient/:id', function (req,res){
-console.log("good");
-Patient.findById(req.params.id,function(err,user){
-   
-    console.log(user.name);
-    res.render("publicpage.ejs",{
-        
-        name: user.name,
-        id: user.id
-        
-    })
+    console.log("good");
+    Patient.findById(req.params.id,function(err,user){
+    
+        console.log(user.name);
+        res.render("publicpage.ejs",{
+            
+            name: user.name,
+            id: user.id
+            
+        })
 
 
+    });
+
+    if (req.session.name){
+        res.render("doctorhomepage.ejs",{
+                name:req.session.name
+            }
+        );
+    } else {
+        res.render("welcome.ejs");
+    }
 });
 
-});
+
 router.get('/getlinks',controller.getLinkedPatients);
 router.post('/publishrecord',controller.createDayRecord);
-
-
 router.post('/recordbydate', controller.findRecordsByUserIdAndDate);
+router.get('/allrecords', controller.findRecordsByUserId);
 router.post('/doctorcreateUser', controller.createDoctor);
 router.post('/patientcreateuser',controller.createPatient);
 router.post('/linkdoc',controller.findDoctorByPracticionerID);
 router.get('/users', controller.findAllUsers);
-
+router.get('/')
 module.exports = router;
