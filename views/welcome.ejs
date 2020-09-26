@@ -56,13 +56,30 @@
             <h4 class="lead text-center"><em>Connecting Patients and Medical Practitioners</em></h4>
         </div>
 
-        <div class="row justify-content-center">
-            <div class = "button">
-                <a href="/logindoctor" class="btn btn-default">Practicioner Login</a>
-                <a href="/loginpatient" class="btn btn-default">Patient Login</a>
-                <a href="/signup" class="btn btn-default">Patient Sign up</a>
-                <a href="/signupdoc" class="btn btn-default">Practicioner Sign up</a>
-            </div>
+        <!-- <img src="images/welcomeImage2.png" class="img-fluid"> -->
+
+        <div class="row justify-content-center" style="margin-top: 10px;">
+
+                <div class="dropdown show" style="margin-right: 5px;">
+                    <a class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Login
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="/loginpatient">Patient Login</a>
+                        <a class="dropdown-item" href="/logindoctor">Practicioner Login</a>
+                    </div>
+                </div>
+
+                <div class="dropdown show" style="margin-left: 5px;">
+                    <a class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sign up
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a href="/signup" class="dropdown-item">Patient Sign up</a>
+                        <a href="/signupdoc" class="dropdown-item">Practitioner Sign up</a>
+                    </div>
+                </div>
+                
         </div>
         
         <div class="row justify-content-center align-bottom">

@@ -26,6 +26,10 @@ router.get('/logindoctor', function (req, res) {
     res.render('logindoctor.ejs')
 });
 
+router.get('/patientsurvey', (req, res)=> {
+    res.render("patientSurvey.ejs");
+});
+
 router.post('/credentialspatient', [
     check('email').isEmail().withMessage("Invalid email address"),
     check('password').isLength({ min: 2 }).withMessage("Password must be at least 3 chars long")
@@ -77,6 +81,7 @@ router.get('/logout', function (req, res) {
     res.redirect('/');
 
 });
+
 router.post('/credentialsdoctor', [
     check('email').isEmail().withMessage("Invalid email address"),
     check('password').isLength({ min: 2 }).withMessage("Password must be at least 3 chars long")
@@ -124,10 +129,17 @@ router.post('/credentialsdoctor', [
 
 router.get('/homepagepatient', function(req,res){
 
-        if (req.session.name){
+    if (req.session.name){
+        PatientRecords.find({user:req.session.userid}, function(err, records) {
+            console.log(records);
+            if (records.length > 4){
+                records = records.slice(records.length-4, records.length);
+            }
             res.render("patientprofile.ejs",{
-                    name:req.session.name,
-                    id:req.session.id
+                name:req.session.name,
+                id:req.session.id,
+                records:records
+
 
                 }
             );
@@ -183,6 +195,12 @@ router.get('/viewpatient/:id', function (req,res){
 });
 router.get('/getlinks',controller.getLinkedPatients);
 router.post('/publishrecord',controller.createDayRecord);
+
+
+router.get('/allrecords', controller.findRecordsByUserId);
+router.get('/recordbydate/:date', controller.findRecordsByUserIdAndDate);
+router.post('/publishrecord', controller.createDayRecord);
+
 router.post('/doctorcreateUser', controller.createDoctor);
 router.post('/patientcreateuser',controller.createPatient);
 router.put('/linkdoc',controller.findDoctorByPracticionerID);
