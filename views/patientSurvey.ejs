@@ -32,7 +32,7 @@
     <div class="row justify-content-center">
         <h1 class="display-3 text-center" style="color: #428BCA; margin-top: 15px;">Patient History Form</h1>
     </div>
-    <div class="row justify-content-center" style="margin-top: 10px;">
+    <div class="row justify-content-center" style="margin-top: 10px; margin-right: 1px; margin-left: 1px; margin-bottom: 5%;">
         <form>
             <div class="form-group">
                 <label for="DOB">Date of Birth</label> 
@@ -104,12 +104,48 @@
 
             <div class="form-group">
                 <label for="sex">What sex were you assigned at birth? (Choose one)</label>
-                <select class="form-control" id="sex">
+                <select class="form-control" id="sex" required>
                     <option>Male</option>
                     <option>Female</option>
                     <option>Other</option>
                     <option>Decline to Answer</option>
                 </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Alcohol">Use of Alcohol</label>
+                <select class="form-control" id="Alcohol" required>
+                    <option>Never</option>
+                    <option>Rarely</option>
+                    <option>Moderate</option>
+                    <option>Daily</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Tobacco">Use of Tobacco</label>
+                <select class="form-control" id="Tobacco" required>
+                    <option>Never</option>
+                    <option>Previously but quit</option>
+                    <option>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="packs">If yes, how many packs a day?</label>
+                <input type="number" class="form-control" name="packs" id="packs" placeholder="Packs/Day" pattern="^[0-9]*$">
+            </div>
+
+            <div class="form-group">
+                <label for="drugUse">Have you used any other drugs? How often? (not including prescriptions)</label>
+                <textarea class="form-control" id="drugUse" rows="3"></textarea>
+                <small id="instructions" class="form-text text-muted">List all, separated by commas. Format: drug - numberOfTimesPerMonth, drug - numberOfTimesPerMonth, drug - numberOfTimesPerMonth, etc.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="prescribed">What medications have you been prescribed (current or past)?</label>
+                <textarea class="form-control" id="prescribed" rows="3"></textarea>
+                <small id="instructions" class="form-text text-muted">List all, separated by commas. Format: medication - present, medication - years since, medication - years since, etc.</small>
             </div>
 
             <div class="form-group">
@@ -153,13 +189,13 @@
                 <textarea class="form-control" id="injuryHistory" rows="3"></textarea>
                 <small id="instructions" class="form-text text-muted">List all, separated by commas. Format: injury - dd/mm/yyyy, hopitalisation - dd/mm/yyyy, surgery - dd/mm/yyyy, etc.</small>
             </div>
-            <div class="form-check">
+            <div class="form-check" style="margin-bottom: 2px;">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
                 <label class="form-check-label" for="exampleCheck1">All of the answers above are accurate to 
                     the best of my knowledge. I understand that providing incorrect information can be dangerous 
                     to my (or patient's) health. It is my responsibility to inform DocConnect of any changes in medical status</label>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default btn-block">Submit</button>
         </form>
     </div>
     
