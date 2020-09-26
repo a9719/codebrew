@@ -108,10 +108,12 @@ var createDayRecord = function(req,res){
     res.send("added successfully");
 };
 
-var findRecordsByUserId= function(req, res) {
-    var userid = req.params.userid;
+
+var findRecordsByUserIdAndDate= function(req, res) {
+    var userid = req.body.userid;
+    var dates =req.body.date;
     console.log(userid);
-    PatientRecords.find({userId:userid}, function(err, record) {
+    PatientRecords.find({userId:userid,date:dates}, function(err, record) {
         if (!err) {
             console.log(record);
             res.send(record);
@@ -138,7 +140,7 @@ var findRecordsByUserId= function(req, res) {
      })
  }
 module.exports.findDoctorByPracticionerID= findDoctorByPracticionerID;
-module.exports.findRecordsByUserId = findRecordsByUserId;
+module.exports.findRecordsByUserIdAndDate = findRecordsByUserIdAndDate;
 module.exports.createDayRecord = createDayRecord;
 module.exports.findAllUsers = findAllUsers;
 module.exports.createPatient= createPatient;
