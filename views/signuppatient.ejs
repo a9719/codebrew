@@ -84,6 +84,10 @@
                         <input type="number" class="form-control" name="weight" id="weight" placeholder="Weight in KG" pattern="^[0-9]*$" required>
                         <small id="WeightHelp" class="form-text text-muted">Enter your weight in Kilograms.</small>
                     </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Contact no."  required>
+                        <small id="WeightHelp" class="form-text text-muted">Enter your Contact details!</small>
+                    </div>
         
                     <div class="form-group">
                         <input type="text" class="form-control" name="ethnicity" id="ethnicity" placeholder="Ethnicity/Race" required>
@@ -91,53 +95,12 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="gender">What is your current gender identity? (Check ALL that apply)</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="male">
-                            <label class="form-check-label" for="male">
-                                Male
-                            </label>
-                        </div>
-        
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="Female">
-                            <label class="form-check-label" for="Female">
-                                Female
-                            </label>
-                        </div>
-        
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="FTM">
-                            <label class="form-check-label" for="FTM">
-                                Transgender Male/Transman/FTM
-                            </label>
-                        </div>
-        
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="MTF">
-                            <label class="form-check-label" for="MTF">
-                                Transgender Female/Transwoman/MTF
-                            </label>
-                        </div>
-        
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="queer">
-                            <label class="form-check-label" for="queer">
-                                Gender Queer
-                            </label>
-                        </div>
-        
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="decline">
-                            <label class="form-check-label" for="decline">
-                                Decline to answer
-                            </label>
-                        </div>
+                        <label for="gender">What is your current gender identity?</label>
+                        <input type="text" class="form-control" name="gender" id="gender" placeholder="Please specify!"  required>
                     </div>
-        
                     <div class="form-group">
                         <label for="sex">What sex were you assigned at birth? (Choose one)</label>
-                        <select class="form-control" id="sex" required>
+                        <select class="form-control" name="sex" id="sex" required>
                             <option>Male</option>
                             <option>Female</option>
                             <option>Other</option>
@@ -147,7 +110,7 @@
         
                     <div class="form-group">
                         <label for="Alcohol">Use of Alcohol</label>
-                        <select class="form-control" id="Alcohol" required>
+                        <select class="form-control" name="Alcohol" id="Alcohol" required>
                             <option>Never</option>
                             <option>Rarely</option>
                             <option>Moderate</option>
@@ -157,69 +120,35 @@
         
                     <div class="form-group">
                         <label for="Tobacco">Use of Tobacco</label>
-                        <select class="form-control" id="Tobacco" required>
+                        <select class="form-control" id="Tobacco" name="Tobacco"required>
                             <option>Never</option>
                             <option>Previously but quit</option>
                             <option>Yes</option>
                         </select>
                     </div>
         
-                    <div class="form-group">
-                        <label for="packs">If yes, how many packs a day?</label>
-                        <input type="number" class="form-control" name="packs" id="packs" placeholder="Packs/Day" pattern="^[0-9]*$">
-                    </div>
+        
         
                     <div class="form-group">
                         <label for="drugUse">Have you used any other drugs? How often? (not including prescriptions)</label>
-                        <textarea class="form-control" id="drugUse" rows="3"></textarea>
+                        <textarea class="form-control" id="drugUse" name="drugUse"rows="3"></textarea>
                         <small id="instructions" class="form-text text-muted">List all, separated by commas. Format: drug - numberOfTimesPerMonth, drug - numberOfTimesPerMonth, drug - numberOfTimesPerMonth, etc.</small>
                     </div>
         
                     <div class="form-group">
                         <label for="prescribed">What medications have you been prescribed (current or past)?</label>
-                        <textarea class="form-control" id="prescribed" rows="3"></textarea>
+                        <textarea class="form-control" id="prescribed" name="prescribed"rows="3"></textarea>
                         <small id="instructions" class="form-text text-muted">List all, separated by commas. Format: medication - present, medication - years since, medication - years since, etc.</small>
                     </div>
         
                     <div class="form-group">
-                        <label for="gender">What severe or chronic illnesses (if any) do you currently suffer from?</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="diabetes">
-                            <label class="form-check-label" for="diabetes">
-                                Diabetes
-                            </label>
-                        </div>
-        
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="IronDeficiency">
-                            <label class="form-check-label" for="IronDeficiency">
-                                Iron Deficiency
-                            </label>
-                        </div>
-        
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="Cardio">
-                            <label class="form-check-label" for="Cardio">
-                                Cardiovascular troubles
-                            </label>
-                        </div>
-        
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="others">
-                            <label class="form-check-label" for="others">
-                                Other
-                            </label>
-                        </div>
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="currentIllnesses">If you selected other, fill it/them in below.</label>
-                        <textarea class="form-control" id="currentIllnesses" rows="3"></textarea>
+                        <label for="diseases">What severe or chronic illnesses (if any) do you currently suffer from?</label>
+                        <textarea class="form-control" id="currentIllnesses" name="diseases"rows="3"></textarea>
                         <small id="instructions" class="form-text text-muted">List all, separated by commas and no other punctuation.</small>
                     </div>
                     <div class="form-group">
                         <label for="injuryHistory">List previous hospitalisations/surgeries/injuries and when they occurred</label>
-                        <textarea class="form-control" id="injuryHistory" rows="3"></textarea>
+                        <textarea class="form-control" name="injuryHistory"id="injuryHistory" rows="3"></textarea>
                         <small id="instructions" class="form-text text-muted">List all, separated by commas. Format: injury - dd/mm/yyyy, hopitalisation - dd/mm/yyyy, surgery - dd/mm/yyyy, etc.</small>
                     </div>
                     <div class="form-check" style="margin-bottom: 2px;">

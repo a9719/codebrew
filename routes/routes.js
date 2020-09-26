@@ -188,7 +188,23 @@ Patient.findById(req.params.id,function(err,user){
     res.render("publicpage.ejs",{
         
         name: user.name,
-        id: user.id
+        id: user.id,
+        email:user.email,
+        dob:user.dateofbirth,
+        phone: user.phone,
+        height: user.height,
+        weight: user.weight,
+        ethnicity:user.ethnicity,
+        gender: user.gender,
+        sexatbirth: user.sex,
+        alcohol: user.Alcohol,
+        tobacco:user.Tobacco,
+        drugs: user.druguse,
+        prescribed: user.prescribed,
+        diseases: user.diseases,
+        injuries: user.injuries
+
+
         
     })
 

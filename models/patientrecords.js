@@ -16,9 +16,7 @@ const PatientrecordsSchema = new mongoose.Schema({
       type:String,
       required:true
     },
-    vitals:[{
-            averagebloodpressure:{type:String}
-          }]
+    vitals:{type: String}
 
 
       

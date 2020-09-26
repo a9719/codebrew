@@ -11,15 +11,29 @@ app.use(bodyParser.json());
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken')
 var createPatient = function(req, res) {
-
+    console.log(req.body);
     var user = new Patient({
         "name":req.body.name,
         "email":req.body.email,
         "password":req.body.password,
-        "phone":"",
-        "diseases":[]
+        "phone":req.body.phone,
+        "diseases":req.body.diseases,
+        "dateofbirth":req.body.date,
+        "height":req.body.height,
+        "weight":req.body.weight,
+        "ethnicity":req.body.ethnicity,
+        "gender":req.body.gender,
+        "sex":req.body.sex,
+        "Alcohol":req.body.Alcohol,
+        "Tobacco":req.body.Tobacco,
+        "druguse":req.body.drugUse,
+        "prescribed":req.body.prescribed,
+        "injuries":req.body.injuryHistory
+
+
+
     });
-    console.log(user);
+    
     console.log("ddd");
    
     Patient.findOne({email:req.body.email}, function(err, user1) {
@@ -101,7 +115,7 @@ var createDayRecord = function(req,res){
         "date":req.body.date,
         "FoodIntake":req.body.FoodIntake,
         "WaterIntake":req.body.WaterIntake,
-        "vitals":[]
+        "vitals":req.body.vitals
     });
     console.log(record);
     record.save();
