@@ -16,10 +16,23 @@ const PatientrecordsSchema = new mongoose.Schema({
       type:String,
       required:true
     },
+    SugarIntake: {
+      type:String,
+      required:true
+    },
     vitals:[{
-            averagebloodpressure:{type:String}
-          }]
-
+            averageBloodPressure:{ type:String, required: true},
+            oxygenSaturationLevels: { type: String, required: true }
+    }],
+    bloodTest:[{
+      hasTaken: { type: Boolean, required: true },
+      dateTaken: { type: Date, required: true},
+      completeBloodCount: { type: String, required: true },
+      bloodMetabolicPanel: { type: String, required: true },
+      bloodEnzymeTest: { type: String, required: true },
+      lipoproteinTest: { type: String, required: true },
+      coagulationPanel: { type: String, required: true }
+    }]
 
       
     
