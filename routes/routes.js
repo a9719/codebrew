@@ -129,17 +129,24 @@ router.get('/homepagepatient', function(req,res){
             res.render("welcome.ejs");
         }
     });
-    router.get('/homepagedoctor', function(req,res){
 
-        if (req.session.name){
-            res.render("doctorhomepage.ejs",{
-                    name:req.session.name
-                }
-            );
-        } else {
-            res.render("welcome.ejs");
-        }
-    })
+router.get('/homepagedoctor', function(req,res){
+
+    if (req.session.name){
+        res.render("doctorhomepage.ejs",{
+                name:req.session.name
+            }
+        );
+    } else {
+        res.render("welcome.ejs");
+    }
+})
+
+router.get('/logout', function(req,res) {
+    req.session.destroy();
+    res.redirect('/');
+});
+
 router.post('/publishrecord',controller.createDayRecord);
 router.post('/doctorcreateUser', controller.createDoctor);
 router.post('/patientcreateuser',controller.createPatient);
