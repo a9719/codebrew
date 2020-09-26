@@ -53,10 +53,12 @@ router.post('/credentialspatient', [
     Patient.findOne({email:userEmail,password:userPassword}, function(err,user) {
         if (!err  && user!=null) {
             console.log(user);
-            req.session.id =user.id;
+            req.session.userid =user.id;
             req.session.email = user.email;
             req.session.password = user.password;
             req.session.name= user.name;
+            
+            console.log(req.session);
 
             res.redirect("/homepagepatient");
 
@@ -96,10 +98,11 @@ router.post('/credentialsdoctor', [
     Doctor.findOne({email:userEmail,password:userPassword}, function(err,user) {
         if (!err  && user!=null) {
             console.log(user);
-            req.session.id =user.id;
+            req.session.userid =user.id;
             req.session.email = user.email;
             req.session.password = user.password;
             req.session.name= user.name;
+            console.log(req.session);
 
             res.redirect("/homepagedoctor");
 
@@ -117,7 +120,9 @@ router.get('/homepagepatient', function(req,res){
 
         if (req.session.name){
             res.render("patientprofile.ejs",{
-                    name:req.session.name
+                    name:req.session.name,
+                    id:req.session.id
+
                 }
             );
         } else {

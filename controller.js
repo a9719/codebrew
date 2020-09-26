@@ -95,14 +95,17 @@ var findAllUsers = function(req, res) {
 };
 
 var createDayRecord = function(req,res){
+    console.log(req.body);
     var record = new PatientRecords({
-        "user":req.body.user,
+        "user":req.session.userid,
         "date":req.body.date,
         "FoodIntake":req.body.FoodIntake,
         "WaterIntake":req.body.WaterIntake,
         "vitals":[]
     });
+    console.log(record);
     record.save();
+    res.send("added successfully");
 };
 
 var findRecordsByUserId= function(req, res) {
