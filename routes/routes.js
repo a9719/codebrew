@@ -124,29 +124,40 @@ router.post('/credentialsdoctor', [
 
 router.get('/homepagepatient', function(req,res){
 
-        if (req.session.name){
+    if (req.session.name){
+        PatientRecords.find({user:req.session.userid}, function(err, records) {
+            console.log(records);
+            if (records.length > 4){
+                records = records.slice(records.length-4, records.length);
+            }
             res.render("patientprofile.ejs",{
-                    name:req.session.name,
-                    id:req.session.id
+                name:req.session.name,
+                id:req.session.id,
+                records:records
 
-                }
-            );
-        } else {
-            res.render("welcome.ejs");
-        }
-    });
-    router.get('/homepagedoctor', function(req,res){
+            });
+        })
+        
+    } else {
+        res.render("welcome.ejs");
+    }
+});
 
-        if (req.session.name){
-            res.render("doctorhomepage.ejs",{
-                    name:req.session.name
-                }
-            );
-        } else {
-            res.render("welcome.ejs");
-        }
-    })
-router.post('/publishrecord',controller.createDayRecord);
+router.get('/homepagedoctor', function(req,res){
+
+    if (req.session.name){
+        res.render("doctorhomepage.ejs",{
+                name:req.session.name
+            }
+        );
+    } else {
+        res.render("welcome.ejs");
+    }
+});
+
+router.get('/allrecords', controller.findRecordsByUserId);
+router.get('/recordbydate/:date', controller.findRecordsByUserIdAndDate);
+router.post('/publishrecord', controller.createDayRecord);
 router.post('/doctorcreateUser', controller.createDoctor);
 router.post('/patientcreateuser',controller.createPatient);
 router.put('/linkdoc',controller.findDoctorByPracticionerID);
