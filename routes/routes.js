@@ -125,12 +125,19 @@ router.post('/credentialsdoctor', [
 router.get('/homepagepatient', function(req,res){
 
     if (req.session.name){
-        res.render("patientprofile.ejs",{
-                name:req.session.name,
-                id:req.session.id
-
+        PatientRecords.find({user:req.session.userid}, function(err, records) {
+            console.log(records);
+            if (records.length > 5){
+                records = records.slice(records.length-5, records.length);
             }
-        );
+            res.render("patientprofile.ejs",{
+                name:req.session.name,
+                id:req.session.id,
+                records:records
+
+            });
+        })
+        
     } else {
         res.render("welcome.ejs");
     }
@@ -148,6 +155,7 @@ router.get('/homepagedoctor', function(req,res){
     }
 });
 
+router.get('/allrecords', controller.findRecordsByUserId);
 router.get('/recordbydate/:date', controller.findRecordsByUserIdAndDate);
 router.post('/publishrecord', controller.createDayRecord);
 router.post('/doctorcreateUser', controller.createDoctor);
