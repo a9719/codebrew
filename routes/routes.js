@@ -71,6 +71,12 @@ router.post('/credentialspatient', [
     });
 
 });
+router.get('/logout', function (req, res) {
+
+    req.session.destroy();
+    res.redirect('/');
+
+});
 router.post('/credentialsdoctor', [
     check('email').isEmail().withMessage("Invalid email address"),
     check('password').isLength({ min: 2 }).withMessage("Password must be at least 3 chars long")
@@ -146,5 +152,7 @@ router.get('/recordbydate/:date', controller.findRecordsByDate);
 router.post('/publishrecord', controller.createDayRecord);
 router.post('/doctorcreateUser', controller.createDoctor);
 router.post('/patientcreateuser',controller.createPatient);
+router.put('/linkdoc',controller.findDoctorByPracticionerID);
 router.get('/users', controller.findAllUsers);
+router.get('/')
 module.exports = router;

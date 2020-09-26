@@ -108,10 +108,12 @@ var createDayRecord = function(req,res){
     res.send("added successfully");
 };
 
-var findRecordsByUserId = function(req, res) {
-    var userid = req.params.userid;
+
+var findRecordsByUserIdAndDate= function(req, res) {
+    var userid = req.body.userid;
+    var dates =req.body.date;
     console.log(userid);
-    PatientRecords.find({userId:userid}, function(err, record) {
+    PatientRecords.find({userId:userid,date:dates}, function(err, record) {
         if (!err) {
             console.log(record);
             res.send(record);
@@ -120,22 +122,25 @@ var findRecordsByUserId = function(req, res) {
         }
     });
 };
+ var findDoctorByPracticionerID = function(req, res){
+     var p= req.body.pracnumber;
+     var userid1= req.body.id;
+     console.log(req.body);
 
-var findRecordsByDate = function(req, res) {
-    var userid = req.session.userid;
-    var dates = req.params.date;
-    PatientRecords.find({userId: userid, date: dates}, function(err, record) {
-        if (!err) {
-            console.log(record);
-            res.send(record);
-        } else {
-            res.sendStatus(404);
-        }
-    });
-};
+     Doctor.findOneAndUpdate({PracticianID:p},{$push: {LinkedPatients:userid1}},{new: true}, function(err,user){
+         if (err){
+             res.send ("Incorret");
 
-module.exports.findRecordsByDate = findRecordsByDate;
-module.exports.findRecordsByUserId = findRecordsByUserId;
+         }
+         else{
+             res.send("Updated");
+         }
+
+
+     })
+ }
+module.exports.findDoctorByPracticionerID= findDoctorByPracticionerID;
+module.exports.findRecordsByUserIdAndDate = findRecordsByUserIdAndDate;
 module.exports.createDayRecord = createDayRecord;
 module.exports.findAllUsers = findAllUsers;
 module.exports.createPatient= createPatient;

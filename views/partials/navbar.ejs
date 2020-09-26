@@ -13,16 +13,20 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/signup">Signup</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSignup" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Signup</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownSignup">
+                    <a class="dropdown-item" href="/signup">Patient Sign up</a>
+                    <a class="dropdown-item" href="/signupdoc">Practitioner Sign up</a>
+                </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Login
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownLogin">
                     <a class="dropdown-item" href="/loginpatient">Patient Login</a>
-                    <a class="dropdown-item" href="/logindoctor">Doctor Login</a>
+                    <a class="dropdown-item" href="/logindoctor">Practitioner Login</a>
                 </div>
             </li>
         </ul>
