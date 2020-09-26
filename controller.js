@@ -139,6 +139,19 @@ var findRecordsByUserIdAndDate= function(req, res) {
 
      })
  }
+ var getLinkedPatients =function(req,res){
+     var k=req.session.userid;
+     Doctor.find({_id:userid},function(err,user){
+         if (err){
+             res.send("error");
+         }
+         else {
+             console.log(req.session.linkedpatients= user.LinkedPatients);
+             res.send("ok");
+         }
+     })
+ }
+ module.exports.getLinkedPatients =getLinkedPatients;
 module.exports.findDoctorByPracticionerID= findDoctorByPracticionerID;
 module.exports.findRecordsByUserIdAndDate = findRecordsByUserIdAndDate;
 module.exports.createDayRecord = createDayRecord;
