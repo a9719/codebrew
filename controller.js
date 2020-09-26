@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Patient= mongoose.model('patient');
 var PatientRecords= mongoose.model('Patientrecords');
+var Doctor = mongoose.model('doctor');
+var Doctor = mongoose.model('doctor');
 var express = require('express');
 
 const app = express();
@@ -36,6 +38,43 @@ var createPatient = function(req, res) {
                     
                     console.log("registered");
                     res.sendfile("./views/signuppatient.html");
+                } else {
+                    res.sendStatus(400);
+                }
+            });
+        }
+    });
+};
+var createDoctor = function(req, res) {
+    console.log(req.body);
+    var user = new Doctor({
+        "name":req.body.name,
+        "email":req.body.email,
+        "password":req.body.password,
+        "phone":req.body.phone,
+        "PracticianID":req.body.PracticianID,
+        "WorkAddress": req.body.WorkAddress,
+        "LinkedPatients":[]
+    });
+    console.log(user);
+    console.log("ddd");
+   
+    Doctor.findOne({email:req.body.email}, function(err, user1) {
+        if (user1) {
+            console.log("User exists!");
+            res.render("signupdoctor.ejs");
+     
+            
+        } else {
+           
+            user.save(function (err, newUser) {
+                console.log(newUser);
+                if (!err) {
+                    
+                    
+                    
+                    console.log("registered");
+                    res.render("signupdoctor.ejs");
                 } else {
                     res.sendStatus(400);
                 }
@@ -83,3 +122,4 @@ module.exports.findRecordsByUserId = findRecordsByUserId;
 module.exports.createDayRecord = createDayRecord;
 module.exports.findAllUsers = findAllUsers;
 module.exports.createPatient= createPatient;
+module.exports.createDoctor= createDoctor;
