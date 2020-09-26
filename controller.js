@@ -127,7 +127,7 @@ var findRecordsByUserIdAndDate= function(req, res) {
      var userid1= req.body.id;
      console.log(req.body);
 
-     Doctor.findOneAndUpdate({PracticianID:p},{$push: {LinkedPatients:userid1}},{new: true}, function(err,user){
+     Doctor.findOneAndUpdate({PracticianID:p},{$push: {LinkedPatientsID:userid1, LinkedPatientsName:req.body.name}},{new: true}, function(err,user){
          if (err){
              res.send ("Incorret");
 
@@ -151,6 +151,7 @@ var findRecordsByUserIdAndDate= function(req, res) {
          }
      })
  }
+
  module.exports.getLinkedPatients =getLinkedPatients;
 module.exports.findDoctorByPracticionerID= findDoctorByPracticionerID;
 module.exports.findRecordsByUserIdAndDate = findRecordsByUserIdAndDate;
