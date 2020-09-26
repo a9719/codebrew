@@ -110,8 +110,8 @@ var createDayRecord = function(req,res){
 
 
 var findRecordsByUserIdAndDate= function(req, res) {
-    var userid = req.body.userid;
-    var dates =req.body.date;
+    var userid = req.session.userid;
+    var dates =req.params.date;
     console.log(userid);
     PatientRecords.find({userId:userid,date:dates}, function(err, record) {
         if (!err) {

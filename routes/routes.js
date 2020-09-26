@@ -148,7 +148,7 @@ router.get('/homepagedoctor', function(req,res){
     }
 });
 
-router.get('/recordbydate/:date', controller.findRecordsByDate);
+router.get('/recordbydate/:date', controller.findRecordsByUserIdAndDate);
 router.post('/publishrecord', controller.createDayRecord);
 router.post('/doctorcreateUser', controller.createDoctor);
 router.post('/patientcreateuser',controller.createPatient);
