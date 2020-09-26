@@ -9,8 +9,7 @@ var doctorSchema = mongoose.Schema(
         "password": { type: String, required: true },
         "PracticianID": { type: String, required: true },
         "WorkAddress":{ type:String},
-        "LinkedPatientsID":{type:[mongoose.Schema.Types.ObjectId],ref: 'patient'},
-        "LinkedPatientsName":{type:[String]}
+        "LinkedPatients":{type:[mongoose.Schema.Types.ObjectId],ref: 'patient'}
         
 
     }
