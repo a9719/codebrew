@@ -168,7 +168,7 @@ router.get('/homepagepatient', function(req,res){
         }
     });
 router.get('/viewpatient/:id', function (req,res){
-    console.log(req.params.id);
+    console.log("good");
     Patient.findById(req.params.id,function(err,user){
        
         console.log(user.name);
