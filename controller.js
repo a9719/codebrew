@@ -1,3 +1,4 @@
+
 var mongoose = require('mongoose');
 var Patient= mongoose.model('patient');
 var PatientRecords= mongoose.model('Patientrecords');
@@ -25,7 +26,7 @@ var createPatient = function(req, res) {
     Patient.findOne({email:req.body.email}, function(err, user1) {
         if (user1) {
             console.log("User exists!");
-            res.sendfile("./views/signuppatient.html");
+            res.render("loginpatient.ejs");
      
             
         } else {
@@ -37,7 +38,7 @@ var createPatient = function(req, res) {
                     
                     
                     console.log("registered");
-                    res.sendfile("./views/signuppatient.html");
+                    res.render("loginpatient.ejs");
                 } else {
                     res.sendStatus(400);
                 }
@@ -62,7 +63,7 @@ var createDoctor = function(req, res) {
     Doctor.findOne({email:req.body.email}, function(err, user1) {
         if (user1) {
             console.log("User exists!");
-            res.render("signupdoctor.ejs");
+            res.render("logindoctor.ejs");
      
             
         } else {
@@ -74,7 +75,7 @@ var createDoctor = function(req, res) {
                     
                     
                     console.log("registered");
-                    res.render("signupdoctor.ejs");
+                    res.render("logindoctor.ejs");
                 } else {
                     res.sendStatus(400);
                 }
@@ -110,9 +111,9 @@ var createDayRecord = function(req,res){
 
 
 var findRecordsByUserIdAndDate= function(req, res) {
-    var userid = req.session.userid;
-    var dates =req.params.date;
-    console.log(userid);
+    var userid = req.body.userid;
+    var dates =req.body.date;
+    console.log(req);
     PatientRecords.find({user:userid,date:dates}, function(err, record) {
         if (!err) {
             console.log(record);
@@ -135,13 +136,12 @@ var findRecordsByUserId = function(req, res) {
         }
     });
 };
-
  var findDoctorByPracticionerID = function(req, res){
      var p= req.body.pracnumber;
-     var userid1= req.body.id;
-     console.log(req.body);
-
-     Doctor.findOneAndUpdate({PracticianID:p},{$push: {LinkedPatients:userid1}},{new: true}, function(err,user){
+     var userid1= req.session.userid;
+     console.log(req.session);
+    
+     Doctor.findOneAndUpdate({PracticianID:p},{$push: {LinkedPatientsID:userid1, LinkedPatientsName:req.session.name}},{new: true}, function(err,user){
          if (err){
              res.send ("Incorret");
 
@@ -153,8 +153,21 @@ var findRecordsByUserId = function(req, res) {
 
      })
  }
+ var getLinkedPatients =function(req,res){
+    var k=req.session.userid;
+    Doctor.find({_id:userid},function(err,user){
+        if (err){
+            res.send("error");
+        }
+        else {
+            console.log(req.session.linkedpatients= user.LinkedPatients);
+            res.send("ok");
+        }
+    })
+}
+
+module.exports.getLinkedPatients =getLinkedPatients;
 module.exports.findDoctorByPracticionerID= findDoctorByPracticionerID;
-module.exports.findRecordsByUserId = findRecordsByUserId;
 module.exports.findRecordsByUserIdAndDate = findRecordsByUserIdAndDate;
 module.exports.createDayRecord = createDayRecord;
 module.exports.findAllUsers = findAllUsers;
