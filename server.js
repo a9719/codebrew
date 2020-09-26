@@ -30,6 +30,7 @@ mongoose.connect(
   .catch(err => console.log(err))
   require('./models/patient.js');
   require('./models/patientrecords.js');
+  require('./models/doctor.js');
   var routes = require('./routes/routes.js');
   app.use(check());
   app.use('/', routes);
