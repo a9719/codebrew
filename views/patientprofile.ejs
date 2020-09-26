@@ -1,74 +1,30 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-    <title> Profile Page</title> 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Profile Page</title> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-      button {
-        background-color: #5A5373;
-        color: white;
-        font-size: 17px;
-        border-radius: 15px;
-        padding: 10px 5px;
-        border: none;
-        cursor: pointer;
-        margin: 10px;
-      }
+  <style>
 
-      .bg-modal {
-        background-color: rgba(0, 0, 0, 0.8);
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        display: none;
-        justify-content: center;
-        align-items: center;
-      }
+    .btn-default{
+        background-color: #428BCA;
+        color:#FFF;
+        border-color: #428BCA;
+    }
+        
+    .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background-color: #23527b;
+    color:#FFF;
+    border-color: #23527b;
+    }
 
-      .modal-contents {
-        height: 300px;
-        width: 500px;
-        background-color: white;
-        text-align: center;
-        padding: 20px;
-        position: relative;
-        border-radius: 4px;
-      }
-
-      input {
-        margin: 15px auto;
-        display: block;
-        width: 50%;
-        padding: 8px;
-        border: 1px solid gray;
-      }
-    </style>
+  </style>
 </head> 
 
-<script>
-  function onModalClick() {
-    document.querySelector('.bg-modal').style.display = "flex";
-  }
-
-  function onModalClose() {
-    document.querySelector('.bg-modal').style.display = "none";
-  }
-</script>
-
 <nav>
-  <%- include('partials/navbar.ejs'); %>
+  <%- include('partials/navbarLoggedIn.ejs'); %>
 </nav>
-
-<div class="topnav">
-    <div class="topnav">
-      
-      <a href="/logout">Log out</a>
-      
-    </div>
-</div>
 
 <body> 
     
@@ -79,10 +35,54 @@
 
     <div class="record-content">
       <h1>My record</h1>
-      <button type="button" onclick="onModalClick()">Add record</button>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#recordModal">
+        Record My Data
+      </button>
     </div>
 
-    <div class="bg-modal">
+    <!-- Modal -->
+    <div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="recordDataModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="recordModalTitle">Record My Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" id="Date" placeholder="Date" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)
+                (?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|
+                (?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" required>
+                <small id="DateHelp" class="form-text text-muted">Enter Date in the format dd/mm/yyyy.</small>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="Food Intake" placeholder="Food Intake">
+                <small id="FoodHelp" class="form-text text-muted">Enter food items separated by commas.</small>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="Water Intake" placeholder="Water Intake">
+                <small id="WaterHelp" class="form-text text-muted">Enter amount in litres.</small>
+              </div>
+              <div class="form-group">
+                <label for="Vitals" class="col-form-label">Vitals:</label>
+                <input type="text" class="form-control" id="Average blood pressure" placeholder="Average blood pressure">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-default">Submit Record</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="bg-modal">
       <div class="modal-contents">
     
         <form action="">
@@ -95,7 +95,7 @@
         </form>
     
       </div>
-    </div>
+    </div>-->
 
 </body> 
 
