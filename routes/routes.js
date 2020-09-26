@@ -199,7 +199,7 @@ router.post('/publishrecord',controller.createDayRecord);
 router.get('/recordbydate/:date', controller.findRecordsByUserIdAndDate);
 router.post('/doctorcreateUser', controller.createDoctor);
 router.post('/patientcreateuser',controller.createPatient);
-router.put('/linkdoc',controller.findDoctorByPracticionerID);
+router.post('/linkdoc',controller.findDoctorByPracticionerID);
 router.get('/users', controller.findAllUsers);
 
 module.exports = router;

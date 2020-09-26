@@ -137,10 +137,10 @@ var findRecordsByUserId = function(req, res) {
 };
  var findDoctorByPracticionerID = function(req, res){
      var p= req.body.pracnumber;
-     var userid1= req.body.id;
-     console.log(req.body);
-
-     Doctor.findOneAndUpdate({PracticianID:p},{$push: {LinkedPatientsID:userid1, LinkedPatientsName:req.body.name}},{new: true}, function(err,user){
+     var userid1= req.session.userid;
+     console.log(req.session);
+    
+     Doctor.findOneAndUpdate({PracticianID:p},{$push: {LinkedPatientsID:userid1, LinkedPatientsName:req.session.name}},{new: true}, function(err,user){
          if (err){
              res.send ("Incorret");
 

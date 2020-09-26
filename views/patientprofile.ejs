@@ -80,6 +80,32 @@
         </div>
       </div>
     </div>
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addDoctor">
+      Add Doctor
+    </button>
+  </div>
+    <div class="modal fade" id="addDoctor" tabindex="-1" role="dialog" aria-labelledby="recordDataModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="recordModalTitle">Record My Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form action="/linkdoc" method="post">
+              
+                <input type="text" class="form-control" id="pracnumber" name="pracnumber" placeholder="PracticianID">
+                <small id="pracnumber" class="form-text text-muted">Please enter carefully</small>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-default">Submit Record</button>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!--<div class="bg-modal">
       <div class="modal-contents">
