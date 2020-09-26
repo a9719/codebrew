@@ -11,8 +11,6 @@ var doctorSchema = mongoose.Schema(
         "WorkAddress":{ type:String},
         "LinkedPatientsID":{type:[mongoose.Schema.Types.ObjectId],ref: 'patient'},
         "LinkedPatientsName":{type:[String]}
-        
-
     }
 );
 
