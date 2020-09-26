@@ -16,15 +16,15 @@ var userSchema = mongoose.Schema(
                 type: String,
                 required: true
               },
-              medicalHistory {
+              medicalHistory: {
                 type: String,
                 required: true
               },
-              surgicalHistory {
+              surgicalHistory: {
                 type: String,
                 required: true
               },
-              allergies {
+              allergies:{
                 type: String,
                 required: true
               },
@@ -78,11 +78,11 @@ var userSchema = mongoose.Schema(
           {
             isDrugAddict: {
               type: Boolean,
-              required, true
+              required: true
             }, 
             drugName: {
               type: String,
-              required, true
+              required: true
             },
             drugUseFrequency: {
               type: String,
