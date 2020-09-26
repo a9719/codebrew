@@ -143,5 +143,6 @@ router.get('/homepagepatient', function(req,res){
 router.post('/publishrecord',controller.createDayRecord);
 router.post('/doctorcreateUser', controller.createDoctor);
 router.post('/patientcreateuser',controller.createPatient);
+router.put('/linkdoc',controller.findDoctorByPracticionerID);
 router.get('/users', controller.findAllUsers);
 module.exports = router;

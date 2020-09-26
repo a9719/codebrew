@@ -120,7 +120,24 @@ var findRecordsByUserId= function(req, res) {
         }
     });
 };
+ var findDoctorByPracticionerID = function(req, res){
+     var p= req.body.pracnumber;
+     var userid1= req.body.id;
+     console.log(req.body);
 
+     Doctor.findOneAndUpdate({PracticianID:p},{$push: {LinkedPatients:userid1}},{new: true}, function(err,user){
+         if (err){
+             res.send ("Incorret");
+
+         }
+         else{
+             res.send("Updated");
+         }
+
+
+     })
+ }
+module.exports.findDoctorByPracticionerID= findDoctorByPracticionerID;
 module.exports.findRecordsByUserId = findRecordsByUserId;
 module.exports.createDayRecord = createDayRecord;
 module.exports.findAllUsers = findAllUsers;
