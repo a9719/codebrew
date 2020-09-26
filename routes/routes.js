@@ -26,6 +26,10 @@ router.get('/logindoctor', function (req, res) {
     res.render('logindoctor.ejs')
 });
 
+router.get('/patientsurvey', (req, res)=> {
+    res.render("patientSurvey.ejs");
+});
+
 router.post('/credentialspatient', [
     check('email').isEmail().withMessage("Invalid email address"),
     check('password').isLength({ min: 2 }).withMessage("Password must be at least 3 chars long")
@@ -77,6 +81,7 @@ router.get('/logout', function (req, res) {
     res.redirect('/');
 
 });
+
 router.post('/credentialsdoctor', [
     check('email').isEmail().withMessage("Invalid email address"),
     check('password').isLength({ min: 2 }).withMessage("Password must be at least 3 chars long")
